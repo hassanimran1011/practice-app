@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 const TextForm = (props) =>{
-    const [text, setText] = useState('');
-    console.log(text)
+    const [text, setText] = useState("");
     const handleUpClick = () =>{
         const newText = text.toUpperCase();
         setText(newText);
@@ -51,10 +50,10 @@ const TextForm = (props) =>{
     return(
         <>  
         <div className='conatiner'>
-            <h1>{props.heading}</h1>
+            <h1 className={props.textStyle}>{props.heading}</h1>
             <div className="mb-3">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
-                <textarea className="form-control" id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange}></textarea>
+                <label htmlFor="exampleFormControlTextarea1" className={`form-label ${props.textStyle}`}>Example textarea</label>
+                <textarea className={`${props.textStyle + " " + props.bgStyle } form-control`} id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange}></textarea>
             </div>
             <button className='btn btn-primary mx-1' onClick={handleUpClick}> Convert to UPPERCASE</button>
             <button className='btn btn-primary mx-1' onClick={handleLoClick}> Convert to lowercase</button>
@@ -63,11 +62,11 @@ const TextForm = (props) =>{
             <button className='btn btn-danger mx-1' onClick={handleClearClick}> Clear Text</button>
         </div>
         <div className='conatiner my-3'>
-            <h2>Words Summary</h2>
-            <p>{text.split(" ").length} words and {text.length} characters</p>
-            <p>{0.008 * text.split(" ").length} minutes need to read</p>
-            <h2>Preview</h2>
-            <p>{text}</p>
+            <h2 className={props.textStyle}>Words Summary</h2>
+            <p className={props.textStyle}>{text.length>0?text.split(" ").length:text.length} words and {text.length} characters</p>
+            <p className={props.textStyle}>{text.length>0?0.008 * text.split(" ").length:"0.00"} minutes need to read</p>
+            <h2 className={props.textStyle}>Preview</h2>
+            <p className={props.textStyle}>{text.length>0?text:"Enter something above to preview it here"}</p>
         </div>
         </>
     );
