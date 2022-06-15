@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import AboutUs from './components/AboutUs';
 import Alert from './components/Alert';
@@ -10,18 +10,22 @@ const App = () =>{
   const [textStyle, setTextStyle] = useState("text-dark");
   const [status, setStatus] = useState("light");
   const [alert, setAlert] = useState(null);
+  const [color, setColor] = useState("");
 
-  useEffect(()=>{
-    setInterval(()=>{
-      setAlert(null);
-    },2000);
-  },[alert]);
+const showColor= (e) =>{
+  setColor(e.target.value);
+  console.log(color);
+}
+
 
   const showAlert = (message, type) => {
     setAlert({
       msg:message,
       type:type
     });
+    setInterval(()=>{
+      setAlert(null);
+    },2000);
 
   }
 
@@ -43,10 +47,10 @@ const App = () =>{
 
   return(
       <>
-        <Navbar title='Text Utils' aboutText='About Us' bgStyle={bgStyle} textStyle={textStyle} handleTheOnChange={handleTheOnChange}  />
+        <Navbar title='Text Utils' aboutText='About Us' bgStyle={bgStyle} textStyle={textStyle} handleTheOnChange={handleTheOnChange} color={color}  />
         <Alert alert={alert}/>
         <div className='container my-3'>
-          <TextForm heading="Enter Text To Analyze" bgStyle={bgStyle} textStyle={textStyle}/>
+          <TextForm heading="Enter Text To Analyze" bgStyle={bgStyle} textStyle={textStyle} onColorHandle={showColor} incolor={color}/>
         </div>
         {/* <AboutUs heading="About Text Utils" bgStyle={bgStyle} textStyle={textStyle}/> */}
       </>

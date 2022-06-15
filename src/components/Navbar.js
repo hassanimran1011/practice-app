@@ -23,8 +23,10 @@ const Navbar = (props) =>{
                                 <label className={"form-check-label " + props.textStyle} htmlFor="">Light</label>
                                 <div className="form-check form-switch mx-2">                                 
                                     <input className="form-check-input" onChange={props.handleTheOnChange} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+                                    
                                     <label className={"form-check-label " + props.textStyle} htmlFor="flexSwitchCheckDefault">Dark</label>
                                 </div>
+                                <div style={{height:"50px", width:"50px", backgroundColor:`${props.color}`}}></div>
                             </form>
                             </div>
                         </div>
