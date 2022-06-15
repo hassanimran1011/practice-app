@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AboutUs from './components/AboutUs';
 import Alert from './components/Alert';
@@ -47,12 +48,24 @@ const showColor= (e) =>{
 
   return(
       <>
-        <Navbar title='Text Utils' aboutText='About Us' bgStyle={bgStyle} textStyle={textStyle} handleTheOnChange={handleTheOnChange} color={color}  />
-        <Alert alert={alert}/>
-        <div className='container my-3'>
-          <TextForm heading="Enter Text To Analyze" bgStyle={bgStyle} textStyle={textStyle} onColorHandle={showColor} incolor={color}/>
+      
+      <Navbar title='Text Utils' aboutText='About Us' bgStyle={bgStyle} textStyle={textStyle} handleTheOnChange={handleTheOnChange} color={color}  />
+      <Alert alert={alert}/>
+      <Routes>
+
+
+        
+          <Route exact path='/' element={
+            <div className='container my-3'>
+        <TextForm heading="Enter Text To Analyze" bgStyle={bgStyle} textStyle={textStyle} onColorHandle={showColor} incolor={color}/>
         </div>
-        {/* <AboutUs heading="About Text Utils" bgStyle={bgStyle} textStyle={textStyle}/> */}
+          } />
+          <Route exact path='/about' element={ <AboutUs heading="About Text Utils" bgStyle={bgStyle} textStyle={textStyle}/> }/>
+        </Routes>
+ 
+        
+        
+
       </>
 
   );
