@@ -41,7 +41,6 @@ const TextForm = (props) =>{
          sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
       }
       const newText = sentence.join(" ");
-    //document.write(sentence.join(" "));
      setText(newText);
     }
 
@@ -83,19 +82,8 @@ const TextForm = (props) =>{
         <div className='container my-3'>
             <h2>onChange Color Changing Element</h2>
             <div style={{height:"200px", width:"200px", backgroundColor:`${props.incolor}`}}></div>
-            {/* <input type="color" onChange={(e)=>{
-                props.setColor(e.target.value)
-            }} value={props.color} /> */}
-                {/* <input onInput={showVal} type="color" id='col'/>
-                <input type="color" value={props.color.hex} onChange={(e) => {props.showColor(e.target.value)}}/>
-                <input
-        type="color"
-        value={props.color}
-        onChange={(e) => {props.showColor(e.target.value)}}
-      />
-      <input type="text" onChange={(e) => {props.showColor(e.target.value)}} value={props.color}/> */}
-      <input type="color" onChange={props.onColorHandle} value={props.incolor}/>
-            </div>
+            <input type="color" onChange={props.onColorHandle} value={props.incolor}/>
+        </div>
         </>
     );
 }
